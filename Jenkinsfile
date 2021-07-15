@@ -20,7 +20,7 @@ pipeline {
                           always {
                               script {
                                   if (env.CHANGE_ID) {
-                                      ppullRequest.comment(allowedBranches: "<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
+                                      pullRequest.comment(allowedBranches: "<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
 
                                               "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                               "<tr>" + "<td>1</td><td>mvn clean install</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
