@@ -133,7 +133,7 @@ pipeline {
           stage("QA-Test") {
               /* agent { label 'qa-automation' } */
               steps{
-                /*  dir('/var/jenkins/workspace/automation-code') { /*
+                /*  dir('/var/jenkins/workspace/automation-code') { */
                       timeout(time: 6, unit: 'MINUTES'){
                           sh '''#!/bin/bash -l
                   echo "run shell script to run runAutomation"
