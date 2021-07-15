@@ -170,7 +170,7 @@ pipeline {
                   steps {
                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                   channel: 'pr-notification-demo',
-                  message: '# PR Check Point Failed!! |Stage| Description | Status| |--|--|--| |1|mvn clean install|✓| |2|Server Deployment|✓| |3|Web Server up check	|❌|  |Job Details|Links| |--|--| |Jenkins Build|[Link](${env.RUN_DISPLAY_URL})| |Github Pull-Request|[${env.BRANCH_NAME}](${env.CHANGE_UR})|',
+                  message: '<h1> hello </h1>',
                   notifyCommitters: true,
                   teamDomain: 'cashfreepayments',
                   tokenCredentialId: 'slack-ID'
