@@ -198,7 +198,7 @@ pipeline {
                       timeout(time: 3, unit: 'MINUTES') {
                         /*  script {
                               println("*** Generating Report For QA-TEST ... ***")
-                              step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
+                              step([$class: 'Publisher', reportFilenamePattern: 'testng-results.xml'])
                               if (fileExists('target/allure-results')) {
                                   allure([
                                           includeProperties: false,
