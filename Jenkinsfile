@@ -170,8 +170,8 @@ pipeline {
                   steps {
                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                   channel: 'pr-notification-demo',
-                  color: '#FFFF00',
-                  message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})",
+                  color: '#ff0000',
+                  message: "PR Check Point Failed: Stage 'QA-TEST [${env.BRANCH_NAME}]'  ❌ (${env.BUILD_URL})",
                   notifyCommitters: true,
                   teamDomain: 'cashfreepayments',
                   tokenCredentialId: 'slack-ID'
@@ -198,6 +198,13 @@ pipeline {
                           script {
                               if (env.CHANGE_ID) {
                                   pullRequest.comment("PR Check Point Passed!!")
+                                  slackSend baseUrl: 'https://hooks.slack.com/services/',
+                                  channel: 'pr-notification-demo',
+                                  color: '#00FF00',
+                                  message: "PR Check Point Passed: [${env.BRANCH_NAME}]'  ✓ (${env.CHANGE_URL})",
+                                  notifyCommitters: true,
+                                  teamDomain: 'cashfreepayments',
+                                  tokenCredentialId: 'slack-ID'
                               }
 
                           }
