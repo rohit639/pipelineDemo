@@ -170,7 +170,7 @@ pipeline {
                   steps {
                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                   channel: 'pr-notification-demo',
-                  message: '<h1> hello </h1>',
+                  message: "<h1> hello </h1>",
                   notifyCommitters: true,
                   teamDomain: 'cashfreepayments',
                   tokenCredentialId: 'slack-ID'
