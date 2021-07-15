@@ -164,8 +164,46 @@ pipeline {
               }
               }
 
+
+              stage("Report-Generation") {
+                /*  agent { label 'qa-automation' } */
+                  steps {
+
+                  /*    dir('/var/jenkins/workspace/freshbots-smoke/automation') { */
+                          timeout(time: 3, unit: 'MINUTES') {
+                            /*  script {
+                                  println("*** Generating Report For QA-TEST ... ***")
+                                  step([$class: 'Publisher', reportFilenamePattern: 'testng-results.xml'])
+                                  if (fileExists('target/allure-results')) {
+                                      allure([
+                                              includeProperties: false,
+                                              jdk              : '',
+                                              properties       : [],
+                                              reportBuildPolicy: 'ALWAYS',
+                                              results          : [[path: 'target/allure-results']]
+                                      ])
+                                  }
+                              } */
+                          }
+                    /*  } */
+                  }
+                  post {
+                      success {
+                          script {
+                              if (env.CHANGE_ID) {
+                                  pullRequest.comment("PR Check Point Passed!!")
+                              }
+                          }
+                      }
+
+                  }
+              }
+
+
+
+
+
           }
 
 
             }
-  
