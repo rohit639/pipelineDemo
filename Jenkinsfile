@@ -20,7 +20,7 @@ pipeline {
 
                           always {
                               script {
-
+                                  if (env.CHANGE_ID) {
                                       pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
 
                                               "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
@@ -31,7 +31,7 @@ pipeline {
                                               "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$RUN_DISPLAY_URL>build</a></td>" + "</tr>" +
                                               "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
                                               "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-
+                                        }
 
                               }
                           }
