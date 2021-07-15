@@ -159,7 +159,7 @@ pipeline {
                                       "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">2</td><td align=\"CENTER\">Server Deployment</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">3</td><td align=\"CENTER\">Server up check</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">4</td><td align=\"CENTER\">QA-Test</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">4</td><td align=\"CENTER\">QA-Test</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
                                       "<tr>" + "<td colspan=\"3\">" +
                                       "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
                                       "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
@@ -169,62 +169,10 @@ pipeline {
                           }
                       }
                   }
-                /*  failure {
-                      script {
-                          if (env.CHANGE_ID) {
-                              pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">2</td><td align=\"CENTER\">Server Deployment</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">3</td><td align=\"CENTER\">Server up check</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">4</td><td align=\"CENTER\">QA-TEST</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
-                                      "<tr>" + "<td colspan=\"3\">" +
-                                      "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$BUILD_URL>$BUILD_ID</a></td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
-                                      "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-                          }
-                      }
-                  } */
               }
 
           }
-          stage("Report-Generation") {
-            /*  agent { label 'qa-automation' } */
-              steps {
-
-              /*    dir('/var/jenkins/workspace/freshbots-smoke/automation') { */
-                      timeout(time: 3, unit: 'MINUTES') {
-                        /*  script {
-                              println("*** Generating Report For QA-TEST ... ***")
-                              step([$class: 'Publisher', reportFilenamePattern: 'testng-results.xml'])
-                              if (fileExists('target/allure-results')) {
-                                  allure([
-                                          includeProperties: false,
-                                          jdk              : '',
-                                          properties       : [],
-                                          reportBuildPolicy: 'ALWAYS',
-                                          results          : [[path: 'target/allure-results']]
-                                  ])
-                              }
-                          } */
-                      }
-                /*  } */
-              }
-              post {
-                  success {
-                      script {
-                          if (env.CHANGE_ID) {
-                              pullRequest.comment("PR Check Point Passed!!")
-                          }
-                      }
-                  }
-
-              }
-          }
-
-      }
 
 
-            
+            }
+  }
