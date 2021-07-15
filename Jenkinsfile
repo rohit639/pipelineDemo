@@ -1,24 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-  agent {
-    kubernetes {
-    defaultContainer 'maven'
-      yaml '''
-        kind: Pod
-        metadata:
-          labels:
-            some-label: some-label-value
-        spec:
-          containers:
-          - name: maven
-            image: maven:3.6.3-jdk-8-slim
-            command:
-            - cat
-            tty: true
-          '''
-          }
-          }
+  agent any
 
           stages {
 
@@ -37,7 +20,7 @@ pipeline {
                           always {
                               script {
                                   if (env.CHANGE_ID) {
-                                      pullRequestCommentCreatedAction(allowedBranches: "<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
+                                      ppullRequest.comment(allowedBranches: "<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
 
                                               "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                               "<tr>" + "<td>1</td><td>mvn clean install</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
