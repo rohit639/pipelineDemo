@@ -21,7 +21,7 @@ pipeline {
                           always {
                               script {
 
-                                      pullRequest.comment(allowedBranches: "<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
+                                      pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
 
                                               "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                               "<tr>" + "<td>1</td><td>mvn clean install</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
@@ -32,7 +32,7 @@ pipeline {
                                               "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
                                               "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
 
-                                  
+
                               }
                           }
 
