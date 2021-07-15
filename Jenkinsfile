@@ -47,7 +47,7 @@ pipeline {
                           unsuccessful {
                               script {
                                   if (env.CHANGE_ID) {
-                                      pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
+                                      pullRequest.comment(" <h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
 
                                               "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                               "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">service 2 failed</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
