@@ -175,7 +175,7 @@ pipeline {
                   notifyCommitters: true,
                   teamDomain: 'cashfreepayments',
                   tokenCredentialId: 'slack-ID'
-                  /*    dir('/var/jenkins/workspace/freshbots-smoke/automation') { */
+                  /*    dir('/var/jenkins/workspace/QA-smoke/automation') { */
                           timeout(time: 3, unit: 'MINUTES') {
                             /*  script {
                                   println("*** Generating Report For QA-TEST ... ***")
@@ -204,7 +204,7 @@ pipeline {
                                   message: "PR Check Point Passed: [${env.BRANCH_NAME}]'  ✓ (${env.CHANGE_URL})",
                                   notifyCommitters: true,
                                   teamDomain: 'cashfreepayments',
-                                  tokenCredentialId: 'slack-ID'
+                                  tokenCredentialId: 'slack-ID' 
                               }
 
                           }
