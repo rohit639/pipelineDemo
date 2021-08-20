@@ -204,7 +204,7 @@ pipeline {
                                   message: "PR Check Point Passed: [${env.BRANCH_NAME}]'  ✓ (${env.CHANGE_URL})",
                                   notifyCommitters: true,
                                   teamDomain: 'cashfreepayments',
-                                  tokenCredentialId: 'slack-ID' 
+                                  tokenCredentialId: 'slack-ID'
                               }
 
                           }
@@ -212,8 +212,6 @@ pipeline {
 
                   }
               }
-
-
 
 
 
