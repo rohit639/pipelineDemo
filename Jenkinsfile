@@ -84,25 +84,7 @@ pipeline {
                       script {
                           if (env.CHANGE_ID) {
                             mail bcc: '', body: readFile("emailDemo.html"), cc: '', from: '', mimeType: 'text/html', replyTo: 'qa-bots@cashfree.com', subject: 'Test mail', to: 'rohit.kumar@cashfree.com'
-                              pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">2</td><td align=\"CENTER\">Server Deployment</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">3</td><td align=\"CENTER\">Server up check</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">4</td><td align=\"CENTER\">QA-Test</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td colspan=\"3\">" +
-                                      "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$BUILD_URL>$BUILD_ID</a></td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
-                                      "<tr>" + "<td colspan=\"2\">" +
-                                    "<table border=\"3\" width=100% style=\"border-collapse: collapse\">" +
-                                    "<tr>" + "<th colspan=\"3\">Reports</th>" + "</tr>" +
-                                    "<tr>" +
-                                    "<td align=\"CENTER\"><a href=$BUILD_URL$ALLURE>Allure</a></td>" +
-                                    "</tr>" +
-                                    "</tr>" + "</table>" + "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-                          }
+                              }
                       }
                   }
               }
@@ -133,7 +115,7 @@ pipeline {
                                               results          : [[path: 'allure-results']]
                                       ])
                                   }
-                              } 
+                              }
                           }
                     /*  } */
                   }
@@ -141,6 +123,25 @@ pipeline {
                       success {
                           script {
                               if (env.CHANGE_ID) {
+                              pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
+                                      "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">2</td><td align=\"CENTER\">Server Deployment</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">3</td><td align=\"CENTER\">Server up check</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">4</td><td align=\"CENTER\">QA-Test</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
+                                      "<tr>" + "<td colspan=\"3\">" +
+                                      "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
+                                      "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$BUILD_URL>$BUILD_ID</a></td>" + "</tr>" +
+                                      "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
+                                      "<tr>" + "<td colspan=\"2\">" +
+                                    "<table border=\"3\" width=100% style=\"border-collapse: collapse\">" +
+                                    "<tr>" + "<th colspan=\"3\">Reports</th>" + "</tr>" +
+                                    "<tr>" +
+                                    "<td align=\"CENTER\"><a href=$BUILD_URL$ALLURE>Allure</a></td>" +
+                                    "</tr>" +
+                                    "</tr>" + "</table>" + "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
+                          
                                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                                   channel: 'pr-notification-demo',
                                   color: '#00FF00',
