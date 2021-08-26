@@ -118,7 +118,7 @@ pipeline {
                     /*  } */
                   }
                   post {
-                      success {
+                      always {
                           script {
                               if (env.CHANGE_ID) {
                               pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
