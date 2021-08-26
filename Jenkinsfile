@@ -16,37 +16,10 @@ pipeline {
                           '''
                       }
 
-                      post {
-
-                          always {
-                          }
-
-                      }
                   }
                   stage('micro service 2') {
                       steps {
                           echo 'any other service running ..'
-                      }
-
-                      post {
-                          unsuccessful {
-                              script {
-                                  if (env.CHANGE_ID) {
-                                      pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
-
-                                              "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
-                                              "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">service 2 failed</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
-                                              "<tr>" + "<td colspan=\"3\">" +
-                                              "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
-                                              "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
-                                              "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$RUN_DISPLAY_URL>build</a></td>" + "</tr>" +
-                                              "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
-                                              "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-
-                                  }
-                              }
-                          }
-
                       }
                   }
               }
@@ -62,14 +35,11 @@ pipeline {
                   }
 
               }
-
-
-
           }
-
 
           stage('Server Check') {
               parallel {
+
                   stage('server 1') {
                       steps {
 
@@ -79,9 +49,8 @@ pipeline {
               '''
                           }
                       }
-
-
                   }
+
                   stage('server 2') {
                       steps {
                           timeout(time: 6, unit: 'MINUTES') {
@@ -92,27 +61,7 @@ pipeline {
                       }
                   }
               }
-              post {
 
-                  success {
-                      script {
-                          if (env.CHANGE_ID) {
-                              pullRequest.comment("<h2>PR Check Point Failed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">2</td><td align=\"CENTER\">Server Deployment</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">3</td><td align=\"CENTER\">Web Server up check</td><td align=\"CENTER\">:x:</td>" + "</tr>" +
-                                      "<tr>" + "<td colspan=\"3\">" +
-                                      "<table border=\"2\" width=100% style=\"border-collapse: collapse\">" +
-                                      "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$RUN_DISPLAY_URL>build</a></td>" + "</tr>" +
-                                      "<tr>" + "<td align=\"CENTER\">Github Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
-                                      "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-                          }
-                      }
-                  }
-
-              }
           }
 
           stage("QA-Test") {
@@ -120,9 +69,10 @@ pipeline {
               steps{
                 /*  dir('/var/jenkins/workspace/automation-code')  */
                       timeout(time: 6, unit: 'MINUTES'){
-                          sh '''#!/bin/bash -l
+
+                  sh '''#!/bin/bash -l
                   echo "run shell script to run runAutomation"
-                '''
+                    '''
 
                       } }
 
@@ -131,7 +81,7 @@ pipeline {
                   always {
                       script {
                           if (env.CHANGE_ID) {
-                          mail bcc: '', body: readFile("emailDemo.html"), cc: '', from: '', mimeType: 'text/html', replyTo: 'qa-bots@cashfree.com', subject: 'Test mail', to: 'rohit.kumar@cashfree.com'
+                            mail bcc: '', body: readFile("emailDemo.html"), cc: '', from: '', mimeType: 'text/html', replyTo: 'qa-bots@cashfree.com', subject: 'Test mail', to: 'rohit.kumar@cashfree.com'
                               pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
                                       "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
@@ -161,6 +111,7 @@ pipeline {
                   notifyCommitters: true,
                   teamDomain: 'cashfreepayments',
                   tokenCredentialId: 'slack-ID'
+
                   /*    dir('/var/jenkins/workspace/QA-smoke/automation') { */
                           timeout(time: 3, unit: 'MINUTES') {
                             /*  script {
@@ -198,10 +149,5 @@ pipeline {
 
                   }
               }
-
-
-
           }
-
-
             }
