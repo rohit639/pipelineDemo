@@ -35,7 +35,7 @@ pipeline {
                       post {
                           unsuccessful {
                               script {
-                                   {
+                                   
                               }
                           }
 
