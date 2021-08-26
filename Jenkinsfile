@@ -104,7 +104,7 @@ pipeline {
                           timeout(time: 3, unit: 'MINUTES') {
                           script {
                          println("*** Generating Report For QA-Smoke ... ***")
-                         if (fileExists('target/allure-results')) {
+                         if (fileExists('allure-results')) {
                              allure([
                                      includeProperties: false,
                                      jdk              : '',
