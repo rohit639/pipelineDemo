@@ -93,7 +93,14 @@ pipeline {
                                       "<tr>" + "<th>Job Details</th><th>Links</th>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">Jenkins Build</td><td align=\"CENTER\"><a href=$BUILD_URL>$BUILD_ID</a></td>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">Pull-Request</td><td align=\"CENTER\"><a href=$CHANGE_URL>$BRANCH_NAME</a></td>" + "</tr>" +
-                                      "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
+                                      "<tr>" + "<td colspan=\"2\">" +
+                                    "<table border=\"3\" width=100% style=\"border-collapse: collapse\">" +
+                                    "<tr>" + "<th colspan=\"3\">Reports</th>" + "</tr>" +
+                                    "<tr>" +
+                                    "<td align=\"CENTER\"><a href=$BUILD_URL$ALLURE>Allure</a></td>" +
+                                    "<td align=\"CENTER\"><a href=$BUILD_URL$TESTNG>TestNG</a></td>" +
+                                    "</tr>" +
+                                    "</tr>" + "</table>" + "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
                           }
                       }
                   }
