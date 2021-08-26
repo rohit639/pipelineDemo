@@ -2,7 +2,9 @@
 
 pipeline {
   agent any
-
+  environment {
+       ALLURE = 'allure'
+   }
           stages {
 
           stage('Build') {
@@ -98,7 +100,6 @@ pipeline {
                                     "<tr>" + "<th colspan=\"3\">Reports</th>" + "</tr>" +
                                     "<tr>" +
                                     "<td align=\"CENTER\"><a href=$BUILD_URL$ALLURE>Allure</a></td>" +
-                                    "<td align=\"CENTER\"><a href=$BUILD_URL$TESTNG>TestNG</a></td>" +
                                     "</tr>" +
                                     "</tr>" + "</table>" + "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
                           }
@@ -140,7 +141,6 @@ pipeline {
                       success {
                           script {
                               if (env.CHANGE_ID) {
-                                  pullRequest.comment("PR Check Point Passed!!")
                                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                                   channel: 'pr-notification-demo',
                                   color: '#00FF00',
