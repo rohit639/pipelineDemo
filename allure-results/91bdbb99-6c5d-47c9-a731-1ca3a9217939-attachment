@@ -1,0 +1,1 @@
+java.lang.AssertionError: Failed as delete Beneficiary is not clickable expected [true] but found [false]
