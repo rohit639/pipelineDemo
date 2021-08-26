@@ -19,8 +19,6 @@ pipeline {
                       post {
 
                           always {
-                              script {
-                                        }
 
                               }
                           }
@@ -34,9 +32,6 @@ pipeline {
 
                       post {
                           unsuccessful {
-                              script {
-
-                              }
                           }
 
                       }
@@ -87,8 +82,6 @@ pipeline {
               post {
 
                   success {
-                      script {
-                      }
                   }
 
               }
