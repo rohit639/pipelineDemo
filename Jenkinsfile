@@ -36,8 +36,6 @@ pipeline {
                           unsuccessful {
                               script {
                                    {
-
-                                  }
                               }
                           }
 
