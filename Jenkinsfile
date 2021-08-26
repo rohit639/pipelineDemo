@@ -122,7 +122,7 @@ pipeline {
 
                   /*    dir('/var/jenkins/workspace/QA-smoke/automation') { */
                           timeout(time: 3, unit: 'MINUTES') {
-                            /*  script {
+                              script {
                                   println("*** Generating Report For QA-TEST ... ***")
                                   if (fileExists('allure-results')) {
                                       allure([
@@ -133,7 +133,7 @@ pipeline {
                                               results          : [[path: 'allure-results']]
                                       ])
                                   }
-                              } */
+                              } 
                           }
                     /*  } */
                   }
