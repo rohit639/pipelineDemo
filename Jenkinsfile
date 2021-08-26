@@ -145,12 +145,12 @@ pipeline {
 
                   always {
                       script {
-                      mail to: 'rohit.kumar@cashfree.com'
-                           body: 'THis will be body',
-                           subject: 'Test mail',
-                           replyTo: 'qa-bots@cashfree.com',
-                           mimeType: 'text/html',
                           if (env.CHANGE_ID) {
+                          mail to: 'rohit.kumar@cashfree.com'
+                               body: "THis will be body",
+                               subject: "Test mail",
+                               replyTo: 'qa-bots@cashfree.com',
+                               mimeType: 'text/html',
                               pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
                                       "<tr>" + "<th>Stage</th><th>Description</th><th>Status</th>" + "</tr>" +
                                       "<tr>" + "<td align=\"CENTER\">1</td><td align=\"CENTER\">mvn clean install</td><td align=\"CENTER\">&#x2713;</td>" + "</tr>" +
