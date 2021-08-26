@@ -104,7 +104,6 @@ pipeline {
                           timeout(time: 3, unit: 'MINUTES') {
                           script {
                          println("*** Generating Report For QA-Smoke ... ***")
-                         step([$class: 'Publisher'])
                          if (fileExists('target/allure-results')) {
                              allure([
                                      includeProperties: false,
