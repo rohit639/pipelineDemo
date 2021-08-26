@@ -120,7 +120,7 @@ pipeline {
                     /*  } */
                   }
                   post {
-                      success {
+                      always {
                           script {
                               if (env.CHANGE_ID) {
                               pullRequest.comment("<h2>PR Check Point Passed!!</h2>" + "<table border=\"2\" width=35% style=\"border-collapse: collapse\">" +
@@ -141,7 +141,7 @@ pipeline {
                                     "<td align=\"CENTER\"><a href=$BUILD_URL$ALLURE>Allure</a></td>" +
                                     "</tr>" +
                                     "</tr>" + "</table>" + "</tr>" + "</table>" + "</td>" + "</tr>" + "</table>")
-                          
+
                                   slackSend baseUrl: 'https://hooks.slack.com/services/',
                                   channel: 'pr-notification-demo',
                                   color: '#00FF00',
