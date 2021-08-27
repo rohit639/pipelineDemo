@@ -2,7 +2,6 @@
 
 pipeline {
   agent any
-  tools {nodejs "nodejs"}
   environment {
        ALLURE = 'allure'
    }
@@ -11,7 +10,7 @@ pipeline {
           stage('Build') {
               parallel {
                   stage('micro service 1') {
-
+                    tools {nodejs "nodejs"}
                       steps {
                         dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp'){
                           sh '''
