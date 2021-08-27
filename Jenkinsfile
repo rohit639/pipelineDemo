@@ -12,9 +12,9 @@ pipeline {
                   stage('micro service 1') {
 
                       steps {
-
+                        dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp')
                           sh '''
-                          echo compile with test, Jar/War file
+                          npm run dev
                           '''
                       }
 
