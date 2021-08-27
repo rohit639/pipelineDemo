@@ -15,7 +15,7 @@ pipeline {
                       steps {
                         dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp'){
                           sh '''
-                          echo pwd
+                          pwd
                           '''
                           }
                       }
