@@ -10,11 +10,11 @@ pipeline {
           stage('Build') {
               parallel {
                   stage('micro service 1') {
-                      dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp')
+
                       steps {
 
                           sh '''
-                          npm run dev
+                          echo compile with test, Jar/War file
                           '''
                       }
 
@@ -47,8 +47,6 @@ pipeline {
                             /* dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp') */
                           timeout(time: 6, unit: 'MINUTES') {
                               sh '''
-                              pwd
-                              ls
                  sh serverCheck.sh cashgram
               '''
                           }
