@@ -47,6 +47,8 @@ pipeline {
                             /* dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp') */
                           timeout(time: 6, unit: 'MINUTES') {
                               sh '''
+                              pwd
+                              ls
                  sh serverCheck.sh cashgram
               '''
                           }
