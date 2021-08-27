@@ -44,10 +44,10 @@ pipeline {
 
                   stage('server 1') {
                       steps {
-
+                            /* dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp') */
                           timeout(time: 6, unit: 'MINUTES') {
                               sh '''
-                 echo "Can run curl to check if server is up or not in a loop. If up break the loop"
+                 sh serverCheck.sh cashgram
               '''
                           }
                       }
