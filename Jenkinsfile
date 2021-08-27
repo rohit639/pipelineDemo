@@ -10,11 +10,11 @@ pipeline {
           stage('Build') {
               parallel {
                   stage('micro service 1') {
-
+                      dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp')
                       steps {
 
                           sh '''
-                          echo compile with test, Jar/War file
+                          npm run dev
                           '''
                       }
 
