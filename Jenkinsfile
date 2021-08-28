@@ -51,7 +51,7 @@ pipeline {
                       steps {
                           timeout(time: 6, unit: 'MINUTES') {
                               sh ''' 
-                              sh serverCheck.sh   
+                              sh serverCheck.sh cashgram
                               '''
                           }
                       }
