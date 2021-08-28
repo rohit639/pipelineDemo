@@ -89,7 +89,11 @@ pipeline {
                   always {
                       script {
                           if (env.CHANGE_ID) {
-                            mail bcc: '', body: readFile("emailDemo.html"), cc: '', from: '', mimeType: 'text/html', replyTo: 'qa-bots@cashfree.com', subject: 'Test mail', to: 'rohit.kumar@cashfree.com'
+                            mail to: 'rohit.kumar@cashfree.com', 
+                            body: readFile("emailDemo.html"), 
+                            replyTo: 'qa-bots@cashfree.com', 
+                            subject: 'Test mail', 
+                            mimeType: 'text/html'
                               }
                       }
                   }
