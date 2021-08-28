@@ -20,7 +20,7 @@ build_status(){
                     while [ "${result}" != 200 ]
                     do
                         sleep $QUERY_TIMEOUT_SECONDS
-                        result=$(curl -s -I$1 | grep HTTP/1.1 | awk {'print $2'})
+                        result=$(curl -s -I $1 | grep HTTP/1.1 | awk {'print $2'})
                         count=$(( $count + 1 ))
 
                         if [ $count = 60 ]; then
