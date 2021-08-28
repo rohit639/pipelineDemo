@@ -10,7 +10,9 @@ pipeline {
           stage('Build') {
               parallel {
                   stage('micro service 1') {
-                    tools {nodejs "nodejs"}
+                    tools {
+                      nodejs "nodejs"
+                    }
                       steps {
                         dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp'){
                           sh '''
