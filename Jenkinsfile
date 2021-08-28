@@ -49,11 +49,10 @@ pipeline {
 
                   stage('server 1') {
                       steps {
-                            /* dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp') */
                           timeout(time: 6, unit: 'MINUTES') {
-                              sh '''
-                 sh serverCheck.sh cashgram
-              '''
+                              sh ''' 
+                              sh serverCheck.sh   
+                              '''
                           }
                       }
                   }

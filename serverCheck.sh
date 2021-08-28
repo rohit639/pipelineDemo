@@ -14,6 +14,7 @@ build_status(){
                     # Maximum wait time for build to Complete is 5 mint. If not Completed Failed.
                     # polling after every 5 Seconds
                     result=$(curl -s -I $1 | grep HTTP/1.1 | awk {'print $2'})
+                    # curl -s -I http://localhost:3000/cashgram/ | grep HTTP/1.1 | awk {'print $2'}
                     echo $result
                     QUERY_TIMEOUT_SECONDS=5
                     count=0
