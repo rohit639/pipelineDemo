@@ -14,7 +14,7 @@ pipeline {
                       nodejs "nodejs"
                     }
                       steps {
-                        sh pwd
+                        pwd()
                         dir('/Users/rohitkumar/eclipse-workspace/cashgramwebapp'){
                           sh '''
                           pwd
