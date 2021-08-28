@@ -23,6 +23,9 @@ pipeline {
 
                   }
                   stage('micro service 2') {
+                    tools {
+                        maven 'M3'
+                    }     
                       steps {
                           echo 'any other service running ..'
                       }
@@ -30,18 +33,13 @@ pipeline {
               }
           }
 
-          stage('Deploy') {
-            tools {
-                        maven 'M3'
-                    }      
+          stage('Deploy') { 
               steps {
                   timeout(time: 2, unit: 'MINUTES') {
                       sh '''
                  echo "Copy/Move from target to server"
                 '''
-
                   }
-
               }
           }
 
@@ -89,9 +87,11 @@ pipeline {
                   always {
                       script {
                           if (env.CHANGE_ID) {
-                            mail to: 'rohit.kumar@cashfree.com', 
+                            mail 
+                            to: 'rohit.kumar@cashfree.com', 
                             body: readFile("emailDemo.html"), 
                             replyTo: 'qa-bots@cashfree.com', 
+                            from: '', 
                             subject: 'Test mail', 
                             mimeType: 'text/html'
                               }
