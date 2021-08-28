@@ -33,7 +33,7 @@ pipeline {
           stage('Deploy') {
               steps {
                 tools {
-                        maven 'maven'
+                        maven "m3"
                     }
                   timeout(time: 2, unit: 'MINUTES') {
                       sh '''
