@@ -31,10 +31,10 @@ pipeline {
           }
 
           stage('Deploy') {
+            tools {
+                        maven 'M3'
+                    }      
               steps {
-                tools {
-                        maven "m3"
-                    }
                   timeout(time: 2, unit: 'MINUTES') {
                       sh '''
                  echo "Copy/Move from target to server"
