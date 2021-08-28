@@ -91,7 +91,7 @@ pipeline {
                             body: readFile("emailDemo.html"), 
                             replyTo: 'qa-bots@cashfree.com', 
                             from: '', 
-                            subject: 'Test mail', 
+                            subject: 'Automation Failed | Pull-Request: $BRANCH_NAME | Job-No: $BUILD_ID', 
                             mimeType: 'text/html'
                               }
                       }
