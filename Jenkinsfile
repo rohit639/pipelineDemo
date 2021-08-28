@@ -88,8 +88,7 @@ pipeline {
                       script {
                           if (env.CHANGE_ID) {
                             mail to: 'rohit.kumar@cashfree.com', 
-                            body: readFile("emailDemo.html"),
-                            body: "Hi, This Job is failing", 
+                            body: ("Hello dfhfjkfgkjfg",readFile("emailDemo.html")),
                             replyTo: 'qa-bots@cashfree.com', 
                             from: '', 
                             subject: "PR-Check Failed | Pull-Request: $BRANCH_NAME | Job-No: $BUILD_ID", 
